@@ -21,12 +21,21 @@ spring:
               uri: lb://USER-SERVICE
               predicates:
                 - Path=/v1/api/users/**
+            - id: payment-service
+              uri: lb://PAYMENT-SERVICE
+              predicates:
+                - Path=/v1/api/payments/**
+            - id: inventory-service
+              uri: lb://INVENTORY-SERVICE
+              predicates:
+                - Path=/v1/api/inventory/**
+
 
 
 eureka:
   client:
     service-url:
-      defaultZone: http://discovery-service:8761/eureka/
+      defaultZone: http://localhost:8761/eureka
     fetch-registry: true
     register-with-eureka: true
   instance:
